@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&K Pastelaria - Cardápio</title>
+    <style>
+        :root {
+            --cor-primaria: #ff6600;
+            --cor-secundaria: #fff3e6;
+            --cor-texto: #333;
+            --cor-fundo: #fdfaf7;
+            --cor-hover: #ff5500;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        header {
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        h2.section-title {
+            color: var(--cor-primaria);
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--cor-primaria);
+            padding-bottom: 5px;
+        }
+
+        .menu-item {
+            background-color: var(--cor-secundaria);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item span {
+            font-weight: bold;
+        }
+
+        .menu-item button {
+            background-color: var(--cor-primaria);
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-item button:hover {
+            background-color: var(--cor-hover);
+        }
+
+        .pedido-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        select {
+            padding: 8px;
+            width: 100%;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .botao-finalizar {
+            display: block;
+            margin-top: 20px;
+            background-color: var(--cor-primaria);
+            color: #fff;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .botao-finalizar:hover {
+            background-color: var(--cor-hover);
+        }
+
+        .lista-pedido {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .lista-pedido li {
+            margin-bottom: 8px;
+        }
+
+        .remover-btn {
+            margin-left: 10px;
+            background-color: crimson;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 2px 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .status-pedido {
+            margin-top: 10px;
+        }
+
+        .status-pedido .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cardápio A&K Pastelaria</h1>
+    </header>
+
+    <div class="container">
+        <!-- Cardápio -->
+        <h2 class="section-title">Pastéis</h2>
+        <div class="menu-item"><span>Pastel de Carne</span> <button onclick="adicionarItem('Pastel de Carne - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Pastel de Frango</span> <button onclick="adicionarItem('Pastel de Frango - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Frango c/ Queijo</span> <button onclick="adicionarItem('Frango c/ Queijo - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Carne c/ Queijo</span> <button onclick="adicionarItem('Carne c/ Queijo - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Frango c/ Catupiry e Orégano</span> <button onclick="adicionarItem('Frango c/ Catupiry e Orégano - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Mistão c/ Catupiry e Orégano</span> <button onclick="adicionarItem('Mistão c/ Catupiry e Orégano - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Sabor Churrasco</span> <button onclick="adicionarItem('Sabor Churrasco - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Banana Real</span> <button onclick="adicionarItem('Banana Real - R$9,00')">Adicionar</button></div>
+
+        <h2 class="section-title">Enroladinhos & Coxinhas</h2>
+        <div class="menu-item"><span>Enroladinho c/ Queijo</span> <button onclick="adicionarItem('Enroladinho c/ Queijo - R$6,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Enroladinho c/ Salsicha</span> <button onclick="adicionarItem('Enroladinho c/ Salsicha - R$5,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Coxinha de Frango</span> <button onclick="adicionarItem('Coxinha de Frango - R$7,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Coxinha de Carne</span> <button onclick="adicionarItem('Coxinha de Carne - R$7,00')">Adicionar</button></div>
+
+        <h2 class="section-title">Bebidas</h2>
+        <div class="menu-item"><span>Cristal lata</span> <button onclick="adicionarItem('Cristal lata - R$4,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Coca-Cola 1 litro</span> <button onclick="adicionarItem('Coca-Cola 1 litro - R$8,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Pepsi 2 litros</span> <button onclick="adicionarItem('Pepsi 2 litros - R$7,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Refrigerante lata</span> <button onclick="adicionarItem('Refrigerante lata - R$4,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Coca-Cola lata</span> <button onclick="adicionarItem('Coca-Cola lata - R$5,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Heineken</span> <button onclick="adicionarItem('Heineken - R$9,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Budweiser</span> <button onclick="adicionarItem('Budweiser - R$8,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Água com gás</span> <button onclick="adicionarItem('Água com gás - R$3,50')">Adicionar</button></div>
+        <div class="menu-item"><span>Água mineral</span> <button onclick="adicionarItem('Água mineral - R$2,50')">Adicionar</button></div>
+
+        <h2 class="section-title">Sucos</h2>
+        <div class="menu-item"><span>Suco de Laranja Copo 300ml</span> <button onclick="adicionarItem('Suco de Laranja Copo 300ml - R$5,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco de Laranja Jarra Completa</span> <button onclick="adicionarItem('Suco de Laranja Jarra Completa - R$13,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco de Laranja Jarra Integral</span> <button onclick="adicionarItem('Suco de Laranja Jarra Integral - R$15,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco de Laranja Integral Copo</span> <button onclick="adicionarItem('Suco de Laranja Integral Copo - R$6,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco de Limão Copo 300ml</span> <button onclick="adicionarItem('Suco de Limão Copo 300ml - R$4,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco de Limão Jarra</span> <button onclick="adicionarItem('Suco de Limão Jarra - R$10,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco da Época Jarra</span> <button onclick="adicionarItem('Suco da Época Jarra - R$10,00')">Adicionar</button></div>
+        <div class="menu-item"><span>Suco da Época Copo 300ml</span> <button onclick="adicionarItem('Suco da Época Copo 300ml - R$4,00')">Adicionar</button></div>
+
+        <!-- Pedido -->
+        <div class="pedido-section">
+            <h2>Seu Pedido</h2>
+
+            <label for="nome">Seu nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome aqui...">
+
+            <ul id="lista-pedido" class="lista-pedido"></ul>
+            <div class="status-pedido" id="status-pedido"></div>
+
+            <label for="entrega">Tipo de pedido:</label>
+            <select id="entrega">
+                <option value="Retirada no local">Retirada no local</option>
+                <option value="Entrega">Entrega</option>
+            </select>
+
+            <label for="pagamento">Forma de pagamento:</label>
+            <select id="pagamento">
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Pix">Pix</option>
+                <option value="Cartão (crédito ou débito)">Cartão (crédito ou débito)</option>
+                <option value="Outro">Outro</option>
+            </select>
+
+            <label for="observacoes">Observações:</label>
+            <input type="text" id="observacoes" placeholder="Endereço, ponto de referência, troco...">
+
+            <button class="botao-finalizar" onclick="enviarPedido()">Enviar pedido pelo WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        let pedido = [];
+
+        function adicionarItem(item) {
+            pedido.push(item);
+            atualizarPedido();
+        }
+
+        function removerItem(index) {
+            pedido.splice(index, 1);
+            atualizarPedido();
+        }
+
+        function atualizarPedido() {
+            const lista = document.getElementById("lista-pedido");
+            lista.innerHTML = "";
+            pedido.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                const btn = document.createElement("button");
+                btn.textContent = "X";
+                btn.className = "remover-btn";
+                btn.onclick = () => removerItem(index);
+                li.appendChild(btn);
+                lista.appendChild(li);
+            });
+        }
+
+        function enviarPedido() {
+            const nome = document.getElementById("nome").value;
+            if (!nome) {
+                alert("Por favor, digite seu nome.");
+                return;
+            }
+
+            if (pedido.length === 0) {
+                document.getElementById('status-pedido').innerHTML = "<span class='error'>Adicione ao menos um item.</span>";
+                return;
+            }
+
+            const entrega = document.getElementById("entrega").value;
+            const pagamento = document.getElementById("pagamento").value;
+            const observacoes = document.getElementById("observacoes").value;
+
+            const mensagem = `Olá, me chamo ${nome} e gostaria de fazer um pedido:%0A%0A${pedido.join("%0A")}%0A%0ATipo de pedido: ${entrega}%0APagamento: ${pagamento}%0AObservações: ${observacoes}`;
+            window.open(`https://wa.me/557581794971?text=${mensagem}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>
